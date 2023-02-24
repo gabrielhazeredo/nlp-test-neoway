@@ -107,6 +107,7 @@ venv.bak/
 
 # project workspace
 workspace/
+.vscode/
 
 # data
 data/
