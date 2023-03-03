@@ -23,98 +23,54 @@
 ## Summary
 > The table below summarizes the key requirements for the project.
 
-| problem type              | target population | entity | N_target | min_coverage | N_labeled | sucess_metrics | updt_freq |
-|---------------------------|-------------------|--------|----------|--------------|-----------|----------------|-----------|
-| multilabel classification | restaurants       | CNPJ   | 30M      | 80%          | NA        | NA             | monthly   |
+| problem type              | target population | entity | N_target | N_labeled | sucess_metrics | updt_freq |
+|---------------------------|-------------------|--------|----------|-----------|----------------|-----------|
+| binary classification     | online reviewers  | reviewers' ids    | 130K     | 130K      | precision      | monthly   |
 
 
 ### Objective
 > Provide a short (max 3-line) description  of the project's objective.
 
-"This project aims at developing a model to automatically determine the type of cuisine of a establishment."
+"This project aims at developing a model to automatically determine if the reviewer would recommend the product."
 
 ### Target population
 > More detailed description of the population to which the model should apply. Include any relevant characteristics.
 
-| Entity | Region | Type        | Size | Status | Sector   | N_target |
-|--------|--------|-------------|------|--------|----------|----------|
-| CNPJ   | Brasil | restaurants | any  | active | services | 30M      |
-
-
-#### Subsetting
-> Also provide a list of sub-setting variables and how they related to the target population.
-
-| Subsetting variable  | Selection rule                               |
-|----------------------|----------------------------------------------|
-| `cd_ramo_atividade`  | belongs to ['5611201', '5611202', '5611202'] |
-| `situacao_cadastral` | 'Ativa'                                      |
+| Entity          | Region      | Type             | N_target |
+|-----------------|-------------|------------------|----------|
+| reviewers' ids  | Brasil      | online reviewers | 30M      |
+                                    |
 
 ### Output specification
 > Describe how the output of the model will be delivered, including its domain and metadata.
 
-The model outputs a list of strings from the list `output_set`
+The model outputs the sentiment of the text, based on the probability of the text leading to a recommendation of the product. The output is a string with the following values: `Yes` `No`.
+
 ```python
-output_set = ['','pizza','mexicano','bar','churrascaria']
-output_example1 = [''] # none
-output_example2 = ['pizza','churrascaria']
+output_example1 = ['Yes'] 
 ```
 
 #### Metadata
-> Your model's metada should be provided in a machine-readable format (e.g. a json file) and include the following items:
 
-* a brief description: this model predicts the type of a restaurant cuisine
-* a measure of accuracy applicable for use of the model in other setups (if applicable): standard deviation, accuracy, error matrix.
-* model version
-* author
-* date created
-* link to training data
+* a brief description: this model predicts the type of a restaurant
+  cuisine
+* a measure of accuracy applicable for use of the model in other
+  setups (if applicable): precision, error matrix.
+* model version: 1.0
+* author: Gabriel Hartmann de Azeredo
+* date created: 03/03/2023
+* link to training data: https://github.com/americanas-tech/b2w-reviews01/blob/main/B2W-Reviews01.csv
+
+Make sure that the final consumer of your model can make use of your metadata.
 
 ### Problem type
 > Describe to which Data Science problem type(s) this project relates to with a brief motivation.
 
-"Since the objective is to assign one or more labels to an entity, this problem is a multi-label classification. It is also unsupervised since no observed data is available."
-
-## Solution architecture [Should this be here? Shouldn't we define a common archtecture?]
-> This section describes the architecture of your solution. It should clarify:
-
-* how and where from your model will consume data,
-* how and where to your model will generate predictions,
-* interaction with a scheduler, API or application,
-* interaction with a model managing system.
-
-Provide a schematic describing how your model will consume data, evaluate the model's output and deliver it to the application. You can use [Lucidchart](https://www.lucidchart.com) for the drawings.
+"Since the objective is to assign one label to a text, this problem is a binary classification. It is also supervised since observed data is available."
 
 ### Limitations and risks
 > Provide a list with the main limitations and the associated risks for this project. (lile are supposed to be a well-educated guess)
 
 | Limitation                              | Likelihood | Loss                               | Contingency                        |
 |-----------------------------------------|------------|------------------------------------|------------------------------------|
-| Nonexistence of observed data           | 100%       | not possible to validate the model | Create a data partnership with VR. |
-| High false positives rate for `m_regex` | 30%        | lack of quality and trust          | Fine tuning of filters.            |
-
-
-### Indexing [OPTIONAL - fill this up if it does not follow conventional pipeline]
-> Describe how your model's outputs will be indexed in the application. Provide any details that affect how the model should produce its outputs.
-
-## Related resources [OPTIONAL]
-> Short listing of related datasets and some specifications.
-
-### Related and observed datasets [OPTIONAL - may not apply]
-> List any related and observed datasets that can be used for your project.
-
-| table name                | observed? | description                                             | Why relevant                                            | Update frequency |
-|---------------------------|-----------|---------------------------------------------------------|---------------------------------------------------------|------------------|
-| data_science_sp.vr_ticket | yes       | contains 8M payouts made at VR-accepting establishments | Can be used to validate model                           | once             |
-| data_science.geo          | no        | contains features of a given region                     | can help create geolocalization features to the problem | yearly           |
-
-
-### Data partners [OPTIONAL - may not apply]
-> State the datasets available from data partnerships, including a description of restrictions that may apply.
-
-| partner | N  | label? | schema                                  | restrictions | terms | responsible     |
-|---------|----|--------|-----------------------------------------|--------------|-------|-----------------|
-| VR      | 1M | yes    | `data_science_sp.vr_transacoes_consumo` | none         | link  | @luana.grandino |
-
-
-## Additional resources [OPTIONAL]
-> Provide links to additional documentation and presentations regarding your project specification.
+| Very imbalanced dataset                 | 100%       | lack of data for label `No`        | Use precision as metric, weigth loss (change threshold if possible)|
