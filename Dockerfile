@@ -1,5 +1,5 @@
 # base-image declaration & credentials
-FROM python:3.6-slim
+FROM python:3.8-slim
 ## For PySpark projects use this image below instead:
 # FROM neowaylabs/docker-spark:2.3.1-hadoop-2.9.1
 
@@ -11,6 +11,7 @@ ARG APP_DIR=/app
 WORKDIR ${APP_DIR}
 ADD requirements.txt .
 RUN pip --disable-pip-version-check install -r requirements.txt
+RUN python -m spacy download pt_core_news_sm
 COPY . ${APP_DIR}
 RUN pip --disable-pip-version-check install -e .
 RUN chmod -R a+w ${APP_DIR}

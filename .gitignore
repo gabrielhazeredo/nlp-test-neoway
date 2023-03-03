@@ -107,3 +107,9 @@ venv.bak/
 
 # project workspace
 workspace/
+.vscode/
+git-filter-repo
+
+# data
+data/
+models/

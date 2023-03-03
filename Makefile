@@ -1,6 +1,6 @@
 IMAGE = nlp-test-neoway
 PACKAGE = nlp_test_neoway
-CLOUD_ROOT = s3://data-analytics-nw/models
+#CLOUD_ROOT = s3://data-analytics-nw/models
 PWD := $(shell pwd)
 UID := $(shell id -u)
 GID := $(shell id -g)
