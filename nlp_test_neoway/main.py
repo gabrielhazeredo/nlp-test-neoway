@@ -190,12 +190,12 @@ def predict(input_data):
 
 
 # Run all pipeline sequentially
-def run(**kwargs):
+def run(data_path, **kwargs):
     """Run the complete pipeline of the model.
     """
     print("Args: {}".format(kwargs))
     print("Running nlp_test_neoway by Gabriel Hartmann de Azeredo")
-    features(**kwargs)  # generate dataset for training
+    features(data_path, **kwargs)  # generate dataset for training
     train(**kwargs)     # training model and save to filesystem
     metadata(**kwargs)  # performance report
 

@@ -1,7 +1,7 @@
 # [`nlp-test-neoway`]
-> Simple project description.
+> This project consists on the NLP Test from Neoway for the Data Scientist position. Its goal is to create a model that can classify a text based on its sentiment. This model uses the B2W-Reviews01 dataset, which contains features and data descriptive of product reviews and with potential predictive capabilities
 
-This model is a `type_of_modeling` that `do_something` to solve `this_problem` aimed to the clients of the `some_vertical`.
+This model is a `NLP SVM model` that `performs sentiment analysis` to solve `automatic recommendation based text`.
 
 ## Stakeholders
 > Describe the people involved in this project
@@ -9,10 +9,10 @@ This model is a `type_of_modeling` that `do_something` to solve `this_problem` a
 | Role                 | Responsibility         | Full name                | e-mail       |
 | -----                | ----------------       | -----------              | ---------    |
 | Data Scientist       | Author                 | [`Gabriel Hartmann de Azeredo`]            | [`gabriel.hazeredo@gmail.com`] |
-| Project Owner        | Co-author              | [`First name Last Name`] | [`e-mail`]   |
+
 
 ## Usage
-> Describe how to reproduce your model
+> How to reproduce the model
 
 Usage is standardized across models. There are two main things you need to know, the development workflow and the Makefile commands.
 
@@ -22,12 +22,11 @@ All you'll need to have setup is Docker and Git, which you probably already have
 
 Makefile commands can be accessed using `make help`.
 
-
 Make sure that **docker** is installed.
 
-Clone the project from the analytics Models repo.
+Clone the project from the repo.
 ```
-git clone https://github.com/<@github_username>/nlp-test-neoway.git
+git clone https://github.com/gabrielhazeredo/nlp-test-neoway.git
 cd nlp-test-neoway
 ```
 
@@ -36,11 +35,11 @@ cd nlp-test-neoway
 
 ### Model Frequency
 
-> Describe the interval frequency and estimated total time to run
+> Prediction time is  ~ 3 seconds for single prediction mode
 
 ### Model updating
 
-> Describe how your model may be updated in the future
+> For simple retraining, the model can be updated by running the `make train` command. This will retrain the model with the latest data and save the model in the `models` folder. Changes in the pipeline can be made by editing the `nlp_test_neoway/main.py` file.
 
 ### Maintenance
 
@@ -48,11 +47,14 @@ cd nlp-test-neoway
 
 ### Minimum viable product
 
-> Describe a minimum configuration that would be able to create a minimum viable product.
+> Any sort of API that provide data as a JSON object with the following structure:
 
-### Early adopters
-
-> Describe any potential paying users for this product if it was available today. Also state a point of contact for each of them.
+```
+{
+    'review_title': 'Title of the review to be classified', 
+    'review_text': 'Body text of the review to be classified'
+}
+```
 
 ## Documentation
 

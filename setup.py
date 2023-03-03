@@ -24,7 +24,7 @@ with open("README.md") as f:
 setup(
     name=NAME,
     version=VERSION,
-    description='<@description>',
+    description='Sentiment Analysis based on B2W reviews',
     long_description=LONG_DESCRIPTION,
     author='Gabriel Hartmann de Azeredo',
     author_email='gabriel.hazeredo@gmail.com',
