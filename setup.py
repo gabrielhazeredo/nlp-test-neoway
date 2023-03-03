@@ -29,12 +29,13 @@ setup(
     author='Gabriel Hartmann de Azeredo',
     author_email='gabriel.hazeredo@gmail.com',
     license='MIT',
-    packages=find_packages(exclude=("tests", "docs")),
+    packages=find_packages(exclude=("tests", "docs", "models", "analysis", "env")),
     entry_points={
         'console_scripts': [
             '{name}={name}.main:cli'.format(name=NAME)
         ],
     },
     # external packages as dependencies
-    install_requires=DEPENDENCIES
+    install_requires=DEPENDENCIES,
+    python_requires='>=3',
 )
