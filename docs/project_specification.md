@@ -8,18 +8,6 @@
 * gathering information regarding relevant datasets and features to the problem,
 * upstream communication and agreement on requisites.
 
-
-## Checklist
-> Mark which tasks have been performed.
-
-- [ ] **Summary**: all major specs are defined including success criteria, scope, etc.
-- [ ] **Output specification**: the output format, metadata and indexation have been defined and agreed upon.
-- [ ] **Solution architecture**: a viable and minimal architecture for the final solution has been provided and agreed upon.
-- [ ] **Limitations and risks**: a list with the main limitations and risks associated to the project has been provided.
-- [ ] **Related resources**: lists with related datasets, features and past projects have been given.
-- [ ] **Peer-review**: you discussed and brainstormed with colleagues the outlined specifications.
-- [ ] **Acceptance**: these specifications have been accepted by the Data and Product directors. State names and date.
-
 ## Summary
 > The table below summarizes the key requirements for the project.
 
@@ -38,8 +26,8 @@
 
 | Entity          | Region      | Type             | N_target |
 |-----------------|-------------|------------------|----------|
-| reviewers' ids  | Brasil      | online reviewers | 30M      |
-                                    |
+| reviewers' ids  | Brasil      | online reviewers | 130K     |
+                                    
 
 ### Output specification
 > Describe how the output of the model will be delivered, including its domain and metadata.
@@ -47,7 +35,7 @@
 The model outputs the sentiment of the text, based on the probability of the text leading to a recommendation of the product. The output is a string with the following values: `Yes` `No`.
 
 ```python
-output_example1 = ['Yes'] 
+output_example = ['Yes'] 
 ```
 
 #### Metadata

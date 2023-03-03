@@ -43,7 +43,7 @@ Make sure that the final consumer of your model can make use of your metadata.
 ### Performance Metrics
 Provide any metrics used and their value in tables.
 
-| metric    | `'Yes'`   | `'No'`      | 
+| metric    | `Yes`   | `No`      | 
 | --------- | --------- | ----------- | 
 | precision | .98       | .79         |
 | recall    | .91       | .93         |
@@ -54,7 +54,7 @@ Provide any metrics used and their value in tables.
 1. merged 'review_title' and 'review_text': both are text data and with similiar behaviour
 2. applied regex to text: clean links, numbers, special characters, double spaces, combined negations
 3. Lemmatization: reduce words to their root form
-4. Unidecoede: remove accents from words, to prevent misspelling
+4. Unidecode: remove accents from words, to prevent misspelling
 
 ## Feature selection
 > Motivate any feature selection method that has been used and list/link

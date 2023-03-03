@@ -35,15 +35,15 @@ cd nlp-test-neoway
 
 ### Model Frequency
 
-> Prediction time is  ~ 3 seconds for single prediction mode
+Prediction time is  ~ 3 seconds for single prediction mode
 
 ### Model updating
 
-> For simple retraining, the model can be updated by running the `make train` command. This will retrain the model with the latest data and save the model in the `models` folder. Changes in the pipeline can be made by editing the `nlp_test_neoway/main.py` file.
+For simple retraining, the model can be updated by running the `make train` command. This will retrain the model with the latest data and save the model in the `models` folder. Changes in the pipeline can be made by editing the `nlp_test_neoway/main.py` file.
 
 ### Maintenance
 
-> Describe how your model may be maintained in the future
+Describe how your model may be maintained in the future
 
 ### Minimum viable product
 
@@ -64,7 +64,6 @@ cd nlp-test-neoway
 
 
 #### Folder structure
->Explain you folder strucure
 
 * [docs](./docs): contains documentation of the project
 * [analysis](./analysis/): contains notebooks of data and modeling experimentation.
