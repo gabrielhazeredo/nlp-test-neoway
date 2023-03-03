@@ -1,5 +1,7 @@
 import fire
-from nlp_test_neoway import config, nlp_utils  # noqa
+#from nlp_test_neoway import config, nlp_utils  # noqa  change for packaging
+import nlp_utils 
+import config 
 import os
 from os import path
 
@@ -22,6 +24,8 @@ def features(data_path, **kwargs):
     """Function that will generate the dataset for your model. It can
     be the target population, training or validation dataset. You can
     do in this step as well do the task of Feature Engineering.
+
+    data_path: str (path to a .csv file)
 
     NOTE
     ----
@@ -81,6 +85,8 @@ def train(**kwargs):
     svc_grid = GridSearchCV(opt_svc, parameters_svc, cv=2, verbose=2, scoring=precision, n_jobs=-1, refit=True)
 
     df_train = pd.read_csv(path.join(config.data_path, 'train.csv'))
+    df_train.dropna(inplace=True)
+    df_train = df_train.astype(str)
     X_train = df_train['review_text']
     y_train = df_train['recommend_to_a_friend']
     svc_grid.fit(X_train, y_train)
@@ -125,6 +131,8 @@ def metadata(**kwargs):
     print("==> TESTING MODEL PERFORMANCE AND GENERATING METADATA")
 
     df_test = pd.read_csv(path.join(config.data_path, 'test.csv'))
+    df_test.dropna(inplace=True)
+    df_test = df_test.astype(str)
 
     X_test = df_test['review_text']
     y_test = df_test['recommend_to_a_friend']
@@ -141,7 +149,7 @@ def metadata(**kwargs):
 def predict(input_data):
     """Predict: load the trained model and score input_data
 
-    input_data: pandas.DataFrame(columns=['review_text', 'review_title']
+    input_data: pandas.DataFrame(columns=['review_text', 'review_title'])
 
     NOTE
     ----
@@ -150,6 +158,13 @@ def predict(input_data):
     """
 
     print("==> PREDICT DATASET {}".format(input_data))
+
+    print(input_data)
+    print(type(input_data))
+
+    # Data check
+    if not isinstance(input_data, pd.DataFrame):
+        input_data = pd.DataFrame(input_data, index=[0]) 
 
     # Data Preprocessing
     if 'review_title' in input_data.columns:

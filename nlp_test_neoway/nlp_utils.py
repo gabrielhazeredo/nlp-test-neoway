@@ -1,6 +1,6 @@
 from os import path
 
-import nlp_test_neoway
+#import nlp_test_neoway
 
 import pandas as pd
 import nltk
