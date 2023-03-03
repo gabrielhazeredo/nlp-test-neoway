@@ -1,7 +1,5 @@
 import fire
-#from nlp_test_neoway import config, nlp_utils  # noqa  change for packaging
-import nlp_utils 
-import config 
+from nlp_test_neoway import config, nlp_utils  # noqa  change for packaging
 import os
 from os import path
 
