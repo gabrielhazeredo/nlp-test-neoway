@@ -1,4 +1,4 @@
-Welcome to project's documentation!
+Welcome to nlp_test_neoway's documentation!
 ==========================================
 
 .. toctree::

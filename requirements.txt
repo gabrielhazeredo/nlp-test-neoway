@@ -153,7 +153,6 @@ terminado==0.17.1
 threadpoolctl==3.1.0
 tinycss2==1.2.1
 tomli==2.0.1
-topic-monitor==0.9.4
 tornado==6.2
 tqdm==4.64.1
 traitlets==5.9.0
